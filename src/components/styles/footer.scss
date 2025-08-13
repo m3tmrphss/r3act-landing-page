@@ -1,0 +1,112 @@
+@import './variables.scss';
+ 
+footer {
+    background-color: $dark-violet;
+    .footer-container {
+        max-width: 1440px;
+        width: 100%;
+        margin: 0 auto;
+        padding: 80px 5% 80px 5%;
+        display: flex;
+        flex-direction: column;
+        gap: 46px;
+        .links-container {
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+            .icons-links {
+                display: flex;
+                flex-flow: column nowrap;
+                gap: 34px;  
+                .footer-logo {
+                    width: 130.72px;
+                }
+                .icons-container {
+                    display: flex;
+                    flex-flow: row nowrap;
+                    align-items: center;
+                    gap: 20px;
+                }
+            }
+            .nav-container {
+                .nav-list {
+                    list-style: none;
+                    display: flex;
+                    flex-flow: row nowrap;
+                    column-gap: 24px;
+                    margin: 0 ;
+                    padding: 0;
+                    .column-container {
+                        .nav-item {
+                            height: 48px;
+                            width: 196px;
+                            display: flex;
+                            align-items: center;
+                            .nav-link {
+                                color: $text;
+                                font-family: $page-font;
+                                font-weight: 400;
+                                font-size: 16px; 
+                                line-height: 1.5em;
+                                letter-spacing: 0%;
+                                vertical-align: middle;
+                                text-decoration: none;
+                                &:hover {
+                                    color: rgb(179, 179, 179);
+                                    transition: 0.3s;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+        .bottom-text {
+            font-family: $page-font;
+            font-weight: 400;
+            font-size: 16px; 
+            line-height: 1.5em;
+            letter-spacing: 0%;
+            color: $light-grey;
+        }
+    }
+}
+@media (max-width: 950px) {
+    footer {
+        .footer-container {
+            padding: 80px 5.21%;
+            .links-container {
+                .nav-container {
+                    .nav-list {
+                        .column-container {
+                            .nav-item {
+                                width: 154px;
+                            }
+                        }
+                    }
+                }
+            }
+            .bottom-text {
+                max-width: 329px;
+                width: 100%;
+            }
+        }
+    }
+}
+@media (max-width: 586px) {
+    footer {
+        .footer-container {
+            padding: 48px 5.56%;
+            .links-container {
+                flex-direction: column;
+                gap: 48px;
+                .nav-container {
+                    .nav-list {
+                        flex-direction: column;
+                    }
+                }
+            }
+        }
+    }
+}
