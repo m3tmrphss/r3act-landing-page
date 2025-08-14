@@ -33,7 +33,7 @@ import photo2 from '../assets/Rectangle 48.png';
 import photo3 from '../assets/Rectangle 49.png';
 import photo4 from '../assets/Rectangle 50.png';
 import '../styles/main.scss'
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 export default function MainNode () {
     const containerRef = useRef(null);
     const [isDragging, setIsDragging] = useState(false);
@@ -45,7 +45,6 @@ export default function MainNode () {
         setStartX(e.pageX - containerRef.current.offsetLeft);
         setScrollLeft(containerRef.current.scrollLeft);
     };
-
     const handleMouseMove = (e) => {
         if (!isDragging) return;
         e.preventDefault();
@@ -53,10 +52,30 @@ export default function MainNode () {
         const walk = (x - startX) * 1.0; // Ускорение
         containerRef.current.scrollLeft = scrollLeft - walk;
     };
-
     const handleMouseUp = () => setIsDragging(false);
-    const handleMouseLeave = () => setIsDragging(false);
+    const handleMouseLeave = () => setIsDragging(false); 
 
+    useEffect(() => {
+        const sections = document.querySelectorAll('section');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // анимация только один раз
+                }
+            });
+        }, { threshold: 0.2 });
+
+        sections.forEach(section => {
+            section.classList.add('fade-up'); // базовый класс анимации
+            observer.observe(section);
+        });
+
+        return () => {
+            sections.forEach(section => observer.unobserve(section));
+        };
+    }, []);
     return (
         <main>
             <section className="about-section">

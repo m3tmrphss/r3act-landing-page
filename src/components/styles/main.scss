@@ -1,10 +1,23 @@
  @import './variables.scss'; 
+ @import './animations.scss';
  main {
     background-color: $base-color;
     .container {
         max-width: 1440px;
         width: 100%;
         margin: 0 auto;
+    }
+    section {
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        &:nth-of-type(1) {
+            transform: translateY(0);
+        }
+    }
+    .visible {
+        opacity: 1;
+        transform: translateY(0);
     }
     .about-section {
         background: linear-gradient(to right, $base-color 0%, $base-color 38%, $dark-violet 38%, $dark-violet 100%);
@@ -22,6 +35,7 @@
                 width: 100%;
                 margin-top: 141px; 
                 margin-left: -88px;
+                animation: sliding-bottom-element 0.8s ease forwards;
                 .title {
                     font-family: $page-font;
                     font-weight: 700;
@@ -48,7 +62,7 @@
         }
         .img-container {
             max-width: 750px;
-            height: 650px;
+            height: 650px; 
             img {
                 width: 100%;
                 height: 100%;
@@ -125,6 +139,7 @@
                 gap: 24px;  
                 .company-item {
                     width: 100%;
+                    animation: sliding-bottom-element 1s ease forwards;
                     .num {
                         color: $light-grey;
                         font-family: $page-font;
@@ -436,7 +451,7 @@
             display: flex;
             flex-direction: column; 
             gap: 120px; 
-            padding: 120px 12.64%;
+            padding: 120px 182px;
             .text-container {
                 @include text-section();
                 max-width: 636px;
@@ -581,7 +596,7 @@
             display: flex;
             flex-direction: column;
             gap: 64px;
-            padding: 120px 2% 120px 5%;
+            padding: 120px 72px 120px 72px;
             .text-container {
                 @include text-section();
                 max-width: 588px;
@@ -636,7 +651,7 @@
             display: flex;
             flex-flow: row nowrap;
             gap: 24px;
-            padding: 120px 12.64%;
+            padding: 120px 182px;
             .text-container {
                 max-width: 528px;
                 @include text-section();
@@ -742,6 +757,11 @@ body {
             .container {
                 height: fit-content;
                 padding: 80px 72px;
+            }
+        }
+        .form-section {
+            .container {
+                padding: 120px 80px;
             }
         }
     }

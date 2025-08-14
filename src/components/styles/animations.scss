@@ -1,0 +1,18 @@
+@keyframes sliding-bottom-element {
+    from {
+        opacity: 0;
+        transform: translateY(12%); 
+    } to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+@keyframes sliding-left-element {
+    from {
+        opacity: 0;
+        transform: translateX(-4%);
+    } to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
